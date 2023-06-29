@@ -8,4 +8,5 @@ access_token = "n7662RkbzNvb5TD8g3hwohLEW264nnYvr9J65iianH46QjPXFbOCezLBYW3mVegI
 song = Path(client_id, client_secret, access_token)
 path = song.search_the_song()
 lyrics = Lyrics(path)
-lyrics.lyrics()
+text = lyrics.lyrics()
+print(text)

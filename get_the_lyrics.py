@@ -13,4 +13,5 @@ class Lyrics:
         div = soup.find(class_="Lyrics__Container-sc-1ynbvzw-5 Dzxov")
         for br in div.find_all("br"):
             br.replace_with("\n")
-        return print(re.sub('<[^<]+?>', '', str(div)))
+        lyrics = re.sub('<[^<]+?>', '', str(div))
+        return lyrics

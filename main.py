@@ -1,4 +1,4 @@
-from search_the_lyrics import Path
+from find_path import Path
 
 client_id = "zcBdtGYUjGLXuoUtcr0Gfe3WyTl9lOjoYsZHqLu9uGylOHnDuo2dvfUa7mfZp0fb"
 client_secret = "vXro5SAhey2kD85II9KxUVsBaaabXz2cv8hJEHPg_uwJqzy6DGcGC_2SbiF576V9VfK86HAt3lPJMKJGZyni6Q"

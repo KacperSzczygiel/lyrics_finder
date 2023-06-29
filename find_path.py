@@ -27,7 +27,7 @@ class Path:
         }
         return params
 
-    def search_song(self):
+    def search_the_song(self):
         name = input("Podaj nazwę utworu/artysty: ")
         param = self.params(name)
         content = self.get_search_results(param)

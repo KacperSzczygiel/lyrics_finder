@@ -11,7 +11,7 @@ class Lyrics:
 
     def lyrics(self):
         page = requests.get("https://genius.com" + self.path)
-        soup = BeautifulSoup(page.text, 'html.parser')
+        soup = BeautifulSoup(page.text, "html.parser")
         div = soup.find(class_=self.div_lyrics_container)
         for br in div.find_all("br"):
             br.replace_with("\n")

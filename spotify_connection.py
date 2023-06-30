@@ -44,7 +44,7 @@ class ConnectWithSpotify:
             current = self.get_currently_playing()
             if current is not None:
                 status = current['currently_playing_type']
-                if status == 'track':
+                if status == "track":
                     artist_name = current['item']['album']['artists'][0]['name']
                     song_title = current['item']['name']
                     leng = current['item']['duration_ms']
@@ -56,7 +56,7 @@ class ConnectWithSpotify:
                         print(f"{lyrics}\n\n\n")
 
                     time.sleep(time_left)
-                elif status == 'ad':
+                elif status == "ad":
                     time.sleep(30)
             else:
                 time.sleep(5)

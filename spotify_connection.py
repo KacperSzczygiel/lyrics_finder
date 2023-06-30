@@ -7,7 +7,7 @@ import os
 load_dotenv("env.py")
 
 
-class ConnectWithSpotify:
+class SpotifyConnection:
     def __init__(self):
         self.client_id = os.getenv("SPOTIPY_CLIENT_ID")
         self.client_secret = os.getenv("SPOTIPY_CLIENT_SECRET")
@@ -47,9 +47,9 @@ class ConnectWithSpotify:
                 if status == "track":
                     artist_name = current['item']['album']['artists'][0]['name']
                     song_title = current['item']['name']
-                    leng = current['item']['duration_ms']
+                    length = current['item']['duration_ms']
                     progress = current['progress_ms']
-                    time_left = int(((leng - progress) / 1000))
+                    time_left = int(((length - progress) / 1000))
 
                     lyrics = self.get_lyrics(song_title, artist_name)
                     if lyrics is not None:

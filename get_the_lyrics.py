@@ -3,13 +3,13 @@ import requests
 import re
 
 
-class Lyrics:
+class LyricsParser:
     div_lyrics_container = "Lyrics__Container-sc-1ynbvzw-5 Dzxov"
 
     def __init__(self, path):
         self.path = path
 
-    def lyrics(self):
+    def parse_lyrics(self):
         page = requests.get("https://genius.com" + self.path)
         soup = BeautifulSoup(page.text, "html.parser")
         div = soup.find(class_=self.div_lyrics_container)

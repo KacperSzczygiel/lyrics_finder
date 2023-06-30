@@ -18,7 +18,7 @@ class Path:
         try:
             content = search_request.json()
         except json.decoder.JSONDecodeError:
-            print("Niepoprawny format")
+            print("Wrong format")
         else:
             return content
 
@@ -31,19 +31,14 @@ class Path:
         }
         return params
 
-    def search_the_song(self):
-        name = input("\nPodaj nazwę utworu/artysty: ")
+    def get_path(self):
+        name = input("\nEnter song/artist name: ")
         param = self.params(name)
         content = self.get_search_results(param)
         x = 0
-        top_10_songs = {}
         while x < 10:
             song_name = content['response']['hits'][x]['result']['full_title']
             print(str(x + 1) + ".", song_name.replace("\xa0", " "))
-            top_10_songs[x + 1] = song_name
             x += 1
-        song_index = input("\nWybierz index piosenki: ")
-        name = top_10_songs[int(song_index)]
-        param = self.params(name)
-        content = self.get_search_results(param)
-        return content['response']['hits'][0]['result']['path']
+        song_index = input("\nChoose song index: ")
+        return content['response']['hits'][int(song_index)-1]['result']['path']

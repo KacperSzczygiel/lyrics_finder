@@ -1,12 +1,20 @@
 from get_the_lyrics import Lyrics
 from find_path import Path
+from spotify_connection import ConnectWithSpotify
 
-client_id = "zcBdtGYUjGLXuoUtcr0Gfe3WyTl9lOjoYsZHqLu9uGylOHnDuo2dvfUa7mfZp0fb"
-client_secret = "vXro5SAhey2kD85II9KxUVsBaaabXz2cv8hJEHPg_uwJqzy6DGcGC_2SbiF576V9VfK86HAt3lPJMKJGZyni6Q"
-access_token = "n7662RkbzNvb5TD8g3hwohLEW264nnYvr9J65iianH46QjPXFbOCezLBYW3mVegI"
+choice = input("Co chciał byś zrobić:"
+               "\n1. Zobaczyć tekst konkretnego utworu."
+               "\n2. Wyświetlać nabierząco text utworów ze Spotify."
+               "\nWybór: ")
 
-song = Path(client_id, client_secret, access_token)
-path = song.search_the_song()
-lyrics = Lyrics(path)
-text = lyrics.lyrics()
-print(text)
+if choice == "1":
+    song = Path()
+    path = song.search_the_song()
+    lyrics = Lyrics(path)
+    print(lyrics.lyrics())
+elif choice == "2":
+    song = ConnectWithSpotify()
+    song.get_token()
+    song.connection()
+else:
+    print("Nie rozumiem polecenia")

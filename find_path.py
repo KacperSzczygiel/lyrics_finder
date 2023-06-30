@@ -1,12 +1,16 @@
+from dotenv import load_dotenv
 import requests
 import json
+import os
+
+load_dotenv("env.py")
 
 
 class Path:
-    def __init__(self, client_id, client_secret, access_token):
-        self.client_id = client_id
-        self.client_secret = client_secret
-        self.access_token = access_token
+    def __init__(self):
+        self.client_id = os.getenv("GENIUS_CLIENT_ID")
+        self.client_secret = os.getenv("GENIUS_CLIENT_SECRET")
+        self.access_token = os.getenv("GENIUS_ACCESS_TOKEN")
 
     @staticmethod
     def get_search_results(params):
@@ -28,7 +32,7 @@ class Path:
         return params
 
     def search_the_song(self):
-        name = input("Podaj nazwę utworu/artysty: ")
+        name = input("\nPodaj nazwę utworu/artysty: ")
         param = self.params(name)
         content = self.get_search_results(param)
         x = 0
@@ -38,7 +42,7 @@ class Path:
             print(str(x + 1) + ".", song_name.replace("\xa0", " "))
             top_10_songs[x + 1] = song_name
             x += 1
-        song_index = input("Wybierz index piosenki: ")
+        song_index = input("\nWybierz index piosenki: ")
         name = top_10_songs[int(song_index)]
         param = self.params(name)
         content = self.get_search_results(param)

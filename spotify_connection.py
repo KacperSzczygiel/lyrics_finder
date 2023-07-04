@@ -18,7 +18,7 @@ class SpotifyConnection:
         self.genius = None
 
     def get_token(self):
-        oauth_object = spotipy.SpotifyOAuth(self.client_id, self.client_secret, self.url, self.access_token, self.scope)
+        oauth_object = spotipy.SpotifyOAuth(self.client_id, self.client_secret, self.url, scope=self.scope)
         token_dict = oauth_object.get_cached_token()['access_token']
         token = token_dict
         return token
